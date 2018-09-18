@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    hostname: 'db'
+    container_name: 'db'
+    ports:
+      - '5432:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    hostname: 'dbadmin'
+    container_name: 'dbadmin'
+    ports:
+      - '5050:80'
+    links:
+      - db:postgres
+    depends_on:
+      - db
+    env_file:
+      - 'pgadmin.env'
+    volumes:
+      - db-admin:/var/lib/pgadmin
+
+  django:
+    build: .
+    hostname: 'django'
+    container_name: 'django'
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    entrypoint: /entrypoint.sh
+    env_file:
+      - 'django.env'
+    ports:
+      - '8000:8000'
+    volumes:
+      - './:/app'
+
+volumes:
+  db-data:
+    external: true
+  db-admin:
+    external: true
