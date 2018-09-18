@@ -1,0 +1,6 @@
+-r base.txt     # Include dependencies in base.txt
+
+django-debug-toolbar==1.10.1
+pylint==2.1.1
+pylint-django==2.0.2
+Sphinx==1.8.0

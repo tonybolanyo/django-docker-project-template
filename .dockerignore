@@ -1,0 +1,10 @@
+.env
+.git
+.vscode
+env
+docs
+src/.coverage
+src/.coveragerc
+src/htmlcov
+**/__pycache__/
+**/db.sqlite3
