@@ -4,9 +4,9 @@ Settings for dev environment
 
 import os
 
-from .base import *
+from .base import *     # pylint: disable=W0401, W0614
 
-DEBUG=True
+DEBUG = True
 
 DATABASES = {
     'default': {
