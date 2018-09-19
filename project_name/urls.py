@@ -20,7 +20,7 @@ from django.urls import include, path
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 from rest_framework_swagger.views import get_swagger_view
 
-schema_view = get_swagger_view(title='{{ project_name }} API Doc')
+schema_view = get_swagger_view(title='{{ project_name }} API Doc')  # pylint: disable=C0103
 
 urlpatterns = [
     path('admin/', admin.site.urls),
