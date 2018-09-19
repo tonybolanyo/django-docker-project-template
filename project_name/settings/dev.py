@@ -6,6 +6,8 @@ import os
 
 from .base import *
 
+DEBUG=True
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -23,3 +25,13 @@ INSTALLED_APPS += [
 MIDDLEWARE += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+def show_toolbar(request):
+    """
+    Allow show debug toolbar when developer settings is in use
+    """
+    return True
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
+}
