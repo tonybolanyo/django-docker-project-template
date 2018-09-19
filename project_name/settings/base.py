@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'health_check',
     'health_check.cache',
     'health_check.db',
+    'health_check.contrib.psutil',
+    'health_check.storage',
     'rest_framework',
     'rest_framework_swagger',
 
